@@ -1,0 +1,48 @@
+<div class="profile-container">
+
+  <div class="profile-contents">
+      <% if flash[:notice] %>
+          <div class="flash"><%= flash[:notice] %></div>
+      <% end %>
+  
+      <h2><%= @current_user.name %>'s profile</h2>
+  
+      <%= link_to 'Edit my profile', edit_user_path( @current_user.id ) %>
+      |
+      <%= link_to 'Delete my profile', user_path( @current_user.id ), method: 'delete' %>
+  
+      <% if @current_user.admin? %>
+          |
+          <%= link_to 'Index of all users', users_path %>
+      <% end %>
+  
+      <p>
+          <strong>Name</strong>: <%= @current_user.name %>
+          <br><br>
+          <strong>Email</strong>: <%= @current_user.email %>
+          <br><br>
+          <strong>Bio</strong>: <%= @current_user.bio %>
+          <br><br>
+          <%= link_to 'Add a new photo', new_photo_path %>
+      </p>
+  
+      <strong>All matches</strong>: 
+      <ul>
+      <% @current_user.all_matches.each do |m| %>
+          <li><%= m.name %></li>
+      <% end %>
+      </ul>
+  </div>
+  
+  <div class="profile-gallery">
+      <ul>
+      <% @current_user.photos.each do |photo| %>
+          <li>
+          <%= cl_image_tag( photo.url ) %>
+          <%= button_to 'Delete photo', photo_path(photo.id), method: 'delete' %>
+          </li>
+      <% end %>
+      </ul>
+  </div>
+  
+  </div>
