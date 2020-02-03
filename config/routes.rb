@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root :to => 'session#new'
+  resources :users
+
+  get '/quiz/:count' => 'quiz#new'
+
+  post 'authenticate', to: 'authentication#authenticate'
 end
