@@ -1,5 +1,6 @@
 class AuthenticationController < ApplicationController
   def authenticate
+    headers['Access-Control-Allow-Origin'] = '*'
     command = AuthenticateUser.call(params[:email], params[:password])
 
     if command.success?

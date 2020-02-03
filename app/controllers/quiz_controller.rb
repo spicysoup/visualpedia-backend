@@ -4,6 +4,7 @@ class QuizController < ApplicationController
   attr_reader :current_user
 
   def new
+    headers['Access-Control-Allow-Origin'] = '*'
     count = params[:count].to_i
     @questions = Question.offset(rand(500)).limit(count)
   end
