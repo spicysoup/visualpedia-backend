@@ -4,7 +4,7 @@ class AuthenticationController < ApplicationController
     command = AuthenticateUser.call(params[:email], params[:password])
 
     if command.success?
-      render json: { auth_token: command.result }
+      render json: { auth_token: command.result[:token], name: command.result[:name], email: command.result[:email] }
     else
       render json: { error: command.errors }, status: :unauthorized
     end
