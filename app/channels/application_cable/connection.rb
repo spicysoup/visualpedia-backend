@@ -11,6 +11,8 @@ module ApplicationCable
       begin
         token = request.headers[:HTTP_SEC_WEBSOCKET_PROTOCOL].split(' ').last
         decoded_token = JsonWebToken.decode(token)
+        puts "------------------------"
+        p decoded_token
         if (current_user = User.find(decoded_token["user_id"]))
           current_user
         else                 

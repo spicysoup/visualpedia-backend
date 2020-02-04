@@ -4,6 +4,12 @@ class ChatMessageCreationEventBroadcastJob < ApplicationJob
   def perform( chat_message )
     # puts '============================='
     # p chat_message
+    
+    # unless @current_user.present?
+    #   puts "UNAUTHORISED CHAT!!!!!!!!!!!!!!!!!"
+    #   return
+    # end
+
     ActionCable
       .server
       .broadcast('chat_channel',
