@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rack-cors'
 gem 'jwt'
 gem 'simple_command'
+gem 'redis', '~> 3.0'
