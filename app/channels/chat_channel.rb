@@ -11,7 +11,7 @@ class ChatChannel < ApplicationCable::Channel
 
   # will be executed when performed() is called on client-side
   def create(options)
-    ChatMessage.create( content: options.fetch('content') )
+    Message.create( content: options.fetch('content') )
   end
 
 end
