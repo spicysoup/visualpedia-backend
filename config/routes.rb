@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :create]
   resources :messages, only: [:index, :create]
   mount ActionCable.server => '/cable'
+  
+  get 'indicators' => 'indicators#index'
+  get 'indicators/:label' => 'indicators#show'
 end
