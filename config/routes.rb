@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   post 'authenticate', to: 'authentication#authenticate'
   resources :conversations, only: [:index, :create]
   resources :messages, only: [:index, :create]
+  get '/indicators' => 'indicators#index'
+  get '/indicators/:label' => 'indicators#show'
+
   mount ActionCable.server => '/cable'
 end
