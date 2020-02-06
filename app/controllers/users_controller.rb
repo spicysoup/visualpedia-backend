@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :check_if_logged_in, except: [:new, :create]
+  skip_before_action :verify_authenticity_token, raise: false
 
   # GET /users
   # GET /users.json
@@ -25,14 +26,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.create user_params
 
     if @user.persisted?   # Log them in automatically after successful sign-up.
-      session[:user_id] = @user.id
-      flash[:notice] = 'You have successfully created an account.'
-      redirect_to user_path( @user.id )
+      respond_to do |format|
+        format.json { render json: @user }
+      end
     else   # If error during sign-up, show the form again.
-      render :new
+      respond_to do |format|
+        format.json { render json: {error: "Error creating user"} }
+      end
     end
   end
 
@@ -59,6 +62,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :isAdmin, :isPremium)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :isAdmin, :isPremium)
     end
 end

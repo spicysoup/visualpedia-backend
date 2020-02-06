@@ -23,11 +23,29 @@ ActiveRecord::Schema.define(version: 2020_02_06_000651) do
     t.integer "question_id"
   end
 
+
   create_table "indicators", force: :cascade do |t|
     t.string "label"
     t.string "indicator_search"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "title"
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "conversation_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -46,4 +64,5 @@ ActiveRecord::Schema.define(version: 2020_02_06_000651) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "messages", "conversations"
 end

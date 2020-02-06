@@ -1,3 +1,10 @@
+User.destroy_all
+
+User.create!(name: 'John Doe', email: 'john@vp.com' , password: 'chicken')
+User.create!(name: 'Jane Doe', email: 'jane@vp.com' , password: 'chicken')
+User.create!(name: 'Jill Doe', email: 'jill@vp.com' , password: 'chicken')
+
+
 Question.destroy_all
 
 Question.create!([

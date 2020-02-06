@@ -9,7 +9,7 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
-# require "action_cable/engine"
+require "action_cable/engine"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
@@ -25,7 +25,7 @@ module PruebaBackend
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        resource '*', headers: :any, methods: [:get, :post, :options, :head]
       end
     end
 
