@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get '/quiz/:count' => 'quiz#new'
   post 'authenticate', to: 'authentication#authenticate'
   resources :conversations, only: [:index, :create]
-  resources :messages, only: [:create]
+  resources :messages, only: [:index, :create]
   mount ActionCable.server => '/cable'
 end
