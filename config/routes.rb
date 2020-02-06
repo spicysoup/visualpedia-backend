@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/indicators/:label' => 'indicators#show'
 
   mount ActionCable.server => '/cable'
+
+
   get 'indicators' => 'indicators#index'
   get 'indicators/:label' => 'indicators#show'
 
