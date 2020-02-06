@@ -2742,3 +2742,10 @@ Answer.create!([
   {id: 2179, answer: "Benjamin Franklin", is_correct: false, question_id: 546},
   {id: 2184, answer: "Bobby Riggs", is_correct: true, question_id: 545}
 ])
+
+Indicator.destroy_all
+
+Indicator.create!(label: 'Gross Domestic Product', indicator_search: 'NY.GDP.MKTP.CD')
+Indicator.create!(label: 'Aggricultural land use', indicator_search: 'AG.LND.AGRI.ZS')
+Indicator.create!(label: 'Renewable Consumption', indicator_search: 'EG.FEC.RNEW.ZS')
+Indicator.create!(label: 'Natural Resource Rents', indicator_search: 'NY.GDP.TOTL.RT.ZS')
