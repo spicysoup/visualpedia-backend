@@ -84,6 +84,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
   config.web_socket_server_url = "wss://visualpedia-backend.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://visualpedia-backend.herokuapp.com', 'http://visualpedia-backend.herokuapp.com']
+  config.action_cable.url = "wss://visualpedia-backend.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://maiqvu.github.io', 'http://maiqvu.github.io']
 end

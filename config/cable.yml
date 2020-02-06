@@ -3,9 +3,9 @@ production:
   url: redis://redistogo:d7f14bad6523eb5bd2019b21c805131e@pike.redistogo.com:10082/
 
 development:
-  adapter: redis
-  url: redis://localhost:6379/1
+  adapter: async
+#  url: redis://localhost:6379/1
 
 test:
-  adapter: redis
-  url: redis://localhost:6379/1
+  adapter: async
+#  url: redis://localhost:6379/1
