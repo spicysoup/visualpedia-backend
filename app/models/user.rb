@@ -10,4 +10,6 @@ class User < ApplicationRecord
   /x
 
   validates :password, format: PASSWORD_REQUIREMENTS, allow_nil: true, on: :update
+
+  has_many :messages
 end
