@@ -10,11 +10,16 @@ class MessageCreationEventBroadcastJob < ApplicationJob
     #   return
     # end
 
+    payload = {
+      content: message.content,
+      created_at: message.created_at.strftime('%H:%M'),
+      sender: message.sender
+    }
+
     ActionCable
       .server
       .broadcast('chat_channel',
                 id: message.id,
-                created_at: message.created_at.strftime('%H:%M'),
-                content: message.content)
+                payload)
   end
 end
