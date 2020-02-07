@@ -5,6 +5,17 @@ class IndicatorsController < ApplicationController
 
   def index
     @indicators = Indicator.all
+
+    respond_to do |format|
+      if @indicators.present?
+        format.html #
+        format.json {render :json => @indicators}
+      else
+        format.html
+        format.json {render json:indicators.errors}
+      end
+    end
+
   end
 
   def show
