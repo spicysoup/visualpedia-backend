@@ -9,7 +9,7 @@ class AuthenticateUser
   end
 
   def call
-    {token: JsonWebToken::encode(user_id: user.id), name: user.name, email: @email} if user
+    {token: JsonWebToken::encode(user_id: user.id), name: user.name, email: @email, user_id: user.id} if user
   end
 
   private
